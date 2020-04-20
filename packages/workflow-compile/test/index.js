@@ -8,13 +8,7 @@ let config;
 beforeEach(() => {
   config = {
     contracts_directory: "./test/sources",
-    contracts_build_directory: "./test/build",
-    logger: {
-      log(stringToLog) {
-        this.loggedStuff = this.loggedStuff + stringToLog;
-      },
-      loggedStuff: ""
-    }
+    contracts_build_directory: "./test/build"
   };
 });
 

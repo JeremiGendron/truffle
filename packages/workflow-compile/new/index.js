@@ -89,6 +89,19 @@ const Contracts = {
       config.events.emit("compile:nothingToCompile");
     }
 
+    const contractNames = {};
+
+    contracts.forEach(contract => {
+      const name = contract.contractName;
+
+      if (contractNames[name]) {
+        config.events.emit("compile:warnings", {
+          warnings: [`Duplicate contract names detected: ${name}`]
+        });
+      }
+      contractNames[name] = true;
+    });
+
     if (config.events) {
       config.events.emit("compile:succeed", {
         contractsBuildDirectory: config.contracts_build_directory,
